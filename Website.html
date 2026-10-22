@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="color-scheme" content="light dark"/>
+<link rel="icon" href="data:,"/>
+<title>Tue / Thu Software Engineering Roadmap — Oct 2026 to May 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f6f3; --surface:#ffffff; --surface2:#f0efe9; --ink:#14181d; --muted:#5d6773; --line:#e3e1d8; --line2:#d1cfc4;
+  --accent:#c2410c; --accent-ink:#9a3412; --accent-soft:#fff1e6; --teal:#0f766e; --teal-soft:#e6f4f1; --amber:#92400e; --amber-soft:#fef3c7;
+  --radius:16px; --radius-sm:10px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0f1216; --surface:#171c22; --surface2:#1d242d; --ink:#eef2f5; --muted:#9aa6b2; --line:#262e38; --line2:#333f4d; --accent:#fb7a45; --accent-ink:#fdba9a; --accent-soft:#2e1e16; --teal:#2dd4bf; --teal-soft:#122a28; --amber-soft:#2b2110; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3); }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:underline;text-underline-offset:3px}
+a:hover{color:var(--accent)}
+.mono{font-family:"IBM Plex Mono",monospace}
+.serif{font-family:"Newsreader",serif}
+
+/* nav */
+.topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1180px;margin:0 auto;padding:0 20px;height:58px;display:flex;align-items:center;gap:16px;overflow:hidden}
+.brand{font-weight:700;letter-spacing:-.02em;white-space:nowrap;font-size:15px}.brand span{color:var(--accent)}
+.nav{margin-left:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}
+.nav a{font-size:13.5px;font-weight:500;color:var(--muted);text-decoration:none;padding:7px 10px;border-radius:999px;white-space:nowrap}.nav a:hover{background:var(--surface);color:var(--ink)}
+.nav-cta{background:var(--ink)!important;color:var(--bg)!important}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.hero{padding:44px 0 28px}
+.eyebrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pill{border:1px solid var(--line);background:var(--surface);padding:5px 10px;border-radius:999px}
+.pill.live{border-color:#bbf7d0;background:#f0fdf4;color:#166534}
+@media(prefers-color-scheme:dark){.pill.live{background:#122a1a;color:#86efac;border-color:#1f3d2a}}
+h1{font-family:"Newsreader",serif;font-size:clamp(38px,6vw,64px);line-height:.95;letter-spacing:-.03em;margin:16px 0 14px;max-width:820px;font-weight:700}
+h1 em{font-style:italic;color:var(--accent)}
+.lede{font-size:18px;line-height:1.6;color:var(--muted);max-width:720px}
+.lede strong{color:var(--ink)}
+.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:20px;margin-top:28px}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.stat b{font-size:32px;line-height:1;letter-spacing:-.03em;display:block}
+.stat span{font-size:13px;color:var(--muted);line-height:1.4;display:block;margin-top:6px}
+.today-card{background:var(--ink);color:var(--bg);border-radius:var(--radius);padding:20px}
+.today-card h3{margin:0 0 8px;font-size:15px}.today-card p{margin:0;color:color-mix(in srgb, var(--bg) 75%, transparent);font-size:14px;line-height:1.6}
+.today-card .big{font-family:"Newsreader",serif;font-size:26px;line-height:1.1;margin:10px 0}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 16px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:white}
+.btn.dark{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:active{transform:scale(.98)}
+
+/* path */
+.path-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow);margin-top:8px}
+.path-track{display:grid;grid-template-columns:repeat(11,1fr);gap:6px;margin-top:16px}
+@media(max-width:860px){.path-track{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:480px){.path-track{grid-template-columns:repeat(2,1fr)}}
+.phase-dot{border:1px solid var(--line);border-radius:12px;padding:12px 10px;background:var(--surface2);cursor:pointer;text-align:left}
+.phase-dot:hover{border-color:var(--accent)}
+.phase-dot b{font-size:12px;font-family:"IBM Plex Mono",monospace;color:var(--accent);display:block}
+.phase-dot span{font-size:12.5px;font-weight:600;line-height:1.3;display:block;margin-top:4px}
+.phase-dot small{font-size:11px;color:var(--muted)}
+
+/* sections */
+section{padding:36px 0}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-family:"Newsreader",serif;font-size:32px;line-height:1;letter-spacing:-.02em;margin:6px 0 0}
+.sec-head p{color:var(--muted);max-width:560px;margin:0;font-size:15px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.card h3{margin:0 0 8px;font-size:16px;letter-spacing:-.01em}
+.card p,.card li{font-size:14.5px;color:var(--muted)}
+.card p strong,.card li strong{color:var(--ink)}
+.card ul{margin:8px 0 0 18px;padding:0}
+.timeline-mini{display:grid;grid-template-columns:56px 1fr;gap:0}
+.timeline-mini div{padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.timeline-mini div:nth-child(odd){font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);font-weight:600;padding-top:10px}
+
+.table-wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:12px 14px;border-bottom:1px solid var(--line);background:var(--surface2)}
+td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+@media(max-width:700px){
+  table,thead,tbody,tr,td,th{display:block;width:100%}
+  thead{display:none}
+  tr{border-bottom:1px solid var(--line);padding:10px 0}
+  td{border:none;padding:6px 14px}
+  td:first-child{font-weight:700}
+}
+
+/* phases */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.filter-btn{border:1px solid var(--line);background:var(--surface);padding:8px 13px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer}
+.filter-btn.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.progressbar{height:8px;background:var(--surface2);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.progressbar i{display:block;height:100%;background:var(--accent);width:0%;transition:width .3s}
+.phase{ background:var(--surface);border:1px solid var(--line);border-radius:18px;margin-bottom:14px;overflow:hidden}
+.phase-head{width:100%;text-align:left;background:none;border:none;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;cursor:pointer;color:var(--ink)}
+.phase-num{width:44px;height:44px;flex:0 0 44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-weight:700}
+.phase-head h3{margin:0;font-size:17px;line-height:1.2}
+.phase-head p{margin:4px 0 0;color:var(--muted);font-size:13.5px}
+.phase-meta{margin-left:auto;text-align:right;flex-shrink:0}
+.phase-meta span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
+.phase-body{display:none;border-top:1px solid var(--line);padding:20px}
+.phase.open .phase-body{display:block}
+.phase.done{border-color:#86efac}
+.phase.done .phase-num{background:#dcfce7;color:#166534}
+.checkpoint{margin-top:16px;background:var(--teal-soft);border:1px solid color-mix(in srgb, var(--teal) 25%, var(--line));border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+.checkpoint p{margin:0;font-size:14px}
+.done-btn{flex-shrink:0;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 12px;font-weight:600;font-size:13px;cursor:pointer}
+.done-btn.on{background:#16a34a;color:white;border-color:#16a34a}
+.resources{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.res-chip{font-size:12.5px;border:1px solid var(--line);background:var(--surface2);padding:6px 10px;border-radius:999px}
+
+/* arch */
+.arch{background:#0f172a;color:#e2e8f0;border-radius:20px;padding:24px;overflow:hidden}
+.arch h3{color:white;margin-top:0}
+.arch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}
+@media(max-width:860px){.arch-grid{grid-template-columns:1fr 1fr}}
+.arch-node{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:14px}
+.arch-node b{font-size:13px;display:block}.arch-node span{font-size:12px;color:#94a3b8;line-height:1.5;display:block;margin-top:4px}
+.arrow{text-align:center;color:#fb7a45;font-size:18px;line-height:1}
+
+.notice{background:var(--amber-soft);border:1px solid #fde68a;border-radius:12px;padding:14px 16px;font-size:14px}
+@media(prefers-color-scheme:dark){.notice{border-color:#453a1a;color:#fde68a}}
+.search{width:100%;padding:13px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:15px;color:var(--ink)}
+@media(max-width:700px){
+  .nav a:not(.nav-cta){display:none}
+  .topbar-inner{height:auto;padding-top:10px;padding-bottom:10px}
+  .phase-head{flex-wrap:wrap;gap:10px}
+  .phase-head>span:nth-child(2){flex:1 1 180px;min-width:0}
+  .phase-meta{margin-left:0;text-align:left;width:100%;padding-left:60px}
+  .phase-meta span{display:inline;margin-right:10px}
+}
+.footer{border-top:1px solid var(--line);padding:28px 0 44px;color:var(--muted);font-size:13.5px}
+details{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--surface)}
+details+details{margin-top:10px}
+summary{font-weight:600;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner"><div class="brand">ROADMAP <span>/ Tue · Thu</span></div><nav class="nav"><a href="#how">How it works</a><a href="#path">Path</a><a href="#phases">Phases</a><a href="#project">wrench.repair</a><a href="#resources">Resources</a><a href="#decisions">Decisions</a><a href="#phases" class="nav-cta">Start Phase 1 →</a></nav></div></header>
+
+<main class="wrap">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow"><span class="pill live">● Today — Thu Oct 22, 2026 · Setup day</span><span class="pill">Oct 26, 2026 — May 20, 2027</span><span class="pill">@John Pork</span></div>
+    <h1>From fundamentals to a working <em>AI-powered</em> wrench.repair.</h1>
+    <p class="lede"><strong>50 focused sessions across 30 weeks.</strong> Every Tuesday you learn, every Thursday you build — 85 minutes each. No doubling up when you miss one, no skipping checkpoints. Five flex weeks match your school breaks.</p>
+
+    <div class="hero-grid">
+      <div class="path-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px"><strong style="font-size:14px">The path at a glance — 11 phases</strong><span class="mono" style="font-size:12px;color:var(--muted)">Tap a phase to jump to it</span></div>
+        <div class="path-track" id="pathTrack"></div>
+        <p style="font-size:13px;color:var(--muted);margin:14px 0 0">Why Python? It's the strongest fit for pipelines and AI work, and algorithm ideas transfer to any language. JavaScript lives on Cloudflare — where wrench.repair will actually run. C++ and Java stay available for later.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="stats">
+          <div class="stat"><b>30</b><span>weeks total<br>Oct → May</span></div>
+          <div class="stat"><b>50</b><span>learning sessions<br>Tue + Thu</span></div>
+          <div class="stat"><b>85<span style="font-size:18px"> min</span></b><span>per session<br>with a 20-min floor</span></div>
+          <div class="stat"><b>5</b><span>flex weeks<br>Thanksgiving, winter, spring</span></div>
+        </div>
+        <div class="today-card">
+          <h3>Today — Oct 22 · Optional setup</h3>
+          <p class="big">Install, skim, flag anything that looks wrong.</p>
+          <p>Install Python 3.12+, VS Code, and git. Create the <span class="mono">learning-log</span> repo — one markdown note per session, 5 minutes each. That repo becomes the raw material for your final website.</p>
+          <div class="btnrow"><button class="btn primary" onclick="downloadLogTemplate()">↓ Download learning-log template</button><a class="btn" href="#phases" style="background:transparent;color:inherit;border-color:rgba(255,255,255,.25);text-decoration:none">Jump to Phase 1 →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="sec-head"><div><div class="kicker">How each session works</div><h2>Tuesday learns. Thursday builds.</h2></div><p>Same rhythm every week: a core goal plus optional stretch items you can drop without guilt.</p></div>
+    <div class="grid2">
+      <div class="card"><h3>🟠 Tuesday — Learn day · 85 min</h3><div class="timeline-mini"><div>0–5</div><div>Pick the week's question, open the resource</div><div>5–45</div><div>Lecture, reading or docs — 1.25× speed is fine</div><div>45–75</div><div>Hands-on practice: type the examples, break them</div><div>75–85</div><div>5 lines of notes in your learning log + one commit</div></div></div>
+      <div class="card"><h3>🟢 Thursday — Build day · 85 min</h3><div class="timeline-mini"><div>Start</div><div>Re-read Tuesday's notes, pick the one thing to build</div><div>60 min</div><div>Build or experiment</div><div>Then</div><div>Keep building; stop when it works or you're stuck 15 min</div><div>Close</div><div>Commit, push, and write what surprised you</div></div></div>
+    </div>
+    <div class="grid3" style="margin-top:16px">
+      <div class="card"><h3>The floor</h3><p>On a low-energy day, a session <strong>counts</strong> if you do 20 minutes of anything on the topic and make one commit. Watch a lecture, read docs, or tidy notes — that still moves you forward.</p></div>
+      <div class="card"><h3>Slip rules</h3><ul><li><strong>Missed a session:</strong> don't double up. Drop that week's stretch items and move on.</li><li><strong>Stuck &gt;15 min:</strong> write the question in your log, skip ahead, ask your senior engineer or an AI tutor later.</li><li><strong>Behind a full week at a checkpoint:</strong> use the next flex week to catch up, or cut one stretch item from the next phase. <strong>Never skip a checkpoint</strong> — each one is a working thing you can show.</li></ul></div>
+      <div class="card"><h3>Flex weeks — no new material</h3><ul><li><strong>Week 5:</strong> Thanksgiving · Nov 23–27</li><li><strong>Weeks 9–11:</strong> Winter break · Dec 21 – Jan 8 (3 weeks)</li><li><strong>Week 23:</strong> Spring break · Mar 29 – Apr 3</li></ul><p>If class isn't meeting, treat them as optional light practice.</p></div>
+    </div>
+  </section>
+
+  <!-- WHAT CHANGED -->
+  <section id="path">
+    <div class="sec-head"><div><div class="kicker">What changed from the meme</div><h2>Your senior's swap is in. Python is home.</h2></div><p>Three of your additions are in, Python replaces Java, and Spring Boot / SQL are traded for the stuff wrench.repair actually needs.</p></div>
+    <div class="table-wrap"><table><thead><tr><th>Meme step</th><th>In your plan</th><th>Weeks</th></tr></thead><tbody>
+      <tr><td>01 Programming fundamentals (Java)</td><td><strong>Python fundamentals, git and terminal</strong></td><td>2</td></tr>
+      <tr><td><em>(new)</em></td><td><strong>HTML, CSS, JavaScript and website hosting on Cloudflare</strong></td><td>3</td></tr>
+      <tr><td>02 Data structures and algorithms</td><td>Kept, in Python</td><td>3</td></tr>
+      <tr><td>03 Databases</td><td>Kept at concept level — storage types, indexes</td><td>1</td></tr>
+      <tr><td>04 SQL</td><td>Skipped; read-only SQL exposure inside Databases</td><td>0</td></tr>
+      <tr><td>05 Spring Boot</td><td>Replaced by <strong>networking and infrastructure design</strong></td><td>3</td></tr>
+      <tr><td>06 APIs and system design</td><td>Kept, built with <strong>FastAPI and a Cloudflare Worker</strong></td><td>2</td></tr>
+      <tr><td><em>(new)</em></td><td><strong>Data pipelines</strong></td><td>2</td></tr>
+      <tr><td><em>(new)</em></td><td><strong>AI integration — the “Claude” step</strong></td><td>2</td></tr>
+      <tr><td>07 DevOps and 08 Cloud (AWS)</td><td>Merged into one phase</td><td>2</td></tr>
+      <tr><td>Project</td><td><strong>Build wrench.repair yourself from scratch</strong></td><td>4</td></tr>
+      <tr><td>Website</td><td>Finish and launch the learning site</td><td>1</td></tr>
+    </tbody></table></div>
+    <p style="font-size:13.5px;color:var(--muted);margin-top:12px">wrench.repair has no source code yet — only a README, a license and Cloudflare config — so you'll write it yourself. This plan assumes JavaScript on a Cloudflare Worker serves the site and answers questions, while Python scripts prepare the manuals offline. Phase 2 teaches the JavaScript, Phase 6 builds your first Worker.</p>
+  </section>
+
+  <!-- PHASES -->
+  <section id="phases">
+    <div class="sec-head"><div><div class="kicker">All 11 phases · Full detail</div><h2>Every week, every checkpoint.</h2></div><p>Open a phase for its Tuesday / Thursday plan, resources, and checkpoint. Mark checkpoints done as you go — your count lives in this tab for planning.</p></div>
+
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
+      <div style="flex:1;min-width:220px"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span><strong id="doneCount">0</strong> / 11 checkpoints done</span><span id="donePct">0%</span></div><div class="progressbar"><i id="progressFill"></i></div></div>
+      <button class="btn" onclick="toggleAll(true)">Expand all</button><button class="btn" onclick="toggleAll(false)">Collapse all</button>
+    </div>
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-f="all">All phases</button>
+      <button class="filter-btn" data-f="foundations">Foundations · 1–4</button>
+      <button class="filter-btn" data-f="systems">Systems · 5–6</button>
+      <button class="filter-btn" data-f="data-ai">Data & AI · 7–8</button>
+      <button class="filter-btn" data-f="ship">Ship it · 9–11</button>
+    </div>
+    <div id="phaseList"></div>
+  </section>
+
+  <!-- PROJECT -->
+  <section id="project">
+    <div class="sec-head"><div><div class="kicker">Phase 10 · The project</div><h2>wrench.repair — built by you, from scratch.</h2></div><p>Four weeks, one vehicle system end-to-end. A user describes a problem and their experience level, and gets sourced, level-appropriate repair steps.</p></div>
+    <div class="arch">
+      <h3>Expected architecture</h3>
+      <p style="color:#94a3b8;font-size:14px;margin:0">Worker serves the page and answers questions. Python prepares manuals offline. Phase 6 is where you design this for real.</p>
+      <div class="arch-grid">
+        <div class="arch-node"><b>🌐 Browser</b><span>Form: vehicle + problem + experience level</span></div>
+        <div class="arch-node"><b>🧭 DNS · Cloudflare</b><span>Domain, HTTPS, CDN, deploy from GitHub</span></div>
+        <div class="arch-node"><b>⚡ Worker (JS)</b><span>Retrieval endpoint, rate limits, cost cap, error handling</span></div>
+        <div class="arch-node"><b>🗂️ Vectorize</b><span>Embedded manual chunks with manual + page metadata</span></div>
+        <div class="arch-node"><b>🤖 Claude API</b><span>Grounded answer with citations — keys stay on the server</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px">
+        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:14px"><b style="font-size:13px">Weeks 26–27 · Scaffold + data</b><p style="font-size:13px;color:#94a3b8;margin:6px 0 0">Turn the Phase 6 design doc into tasks, deploy a bare Worker via CI, run one vehicle / one system through your Phase 7 pipeline, embed & index it.</p></div>
+        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:14px"><b style="font-size:13px">Week 28 · Retrieval + prompt</b><p style="font-size:13px;color:#94a3b8;margin:6px 0 0">Test with 10 real questions, fix the worst chunking, design prompts with safety rules that send risky jobs to a professional.</p></div>
+        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:14px"><b style="font-size:13px">Week 29 · Wire + evaluate</b><p style="font-size:13px;color:#94a3b8;margin:6px 0 0">Form → API → Claude. Evaluate with 20 questions across beginner & experienced levels, check citations, deploy, retrospective.</p></div>
+      </div>
+    </div>
+    <div class="notice" style="margin-top:14px"><strong>Scope warning:</strong> Four weeks is tight for a first build. Stay with one vehicle system and cut features before cutting checkpoints — whatever isn't finished becomes your next roadmap. For anything safety-critical (brakes, airbags), be conservative and say when to see a professional. <strong>Checkpoint:</strong> one system answers end-to-end, every answer cites its source passage, each change merged through a PR.</div>
+
+    <div class="grid2" style="margin-top:16px">
+      <div class="card"><h3>Phase 11 — The website you're building toward</h3><p>Week 30 · May 17–20, plus a v0 from Week 6. The finished site is a static HTML/CSS/JS page set built from your learning-log notes — building it is itself Phase 2 practice. You publish v0 in Week 6 and grow it as you go.</p><ul><li><strong>Roadmap</strong> — this plan, with each checkpoint ticked off</li><li><strong>Learning log</strong> — one entry per week, from your session notes</li><li><strong>Projects</strong> — each phase's mini-project with a link and a screenshot</li><li><strong>wrench.repair</strong> — architecture diagram, what you built, what you'd do differently</li><li><strong>Resources</strong> — the best links you actually used</li></ul><p><strong>Tue May 17:</strong> assemble notes, screenshots, diagrams; accessibility & mobile check. <strong>Thu May 20:</strong> polish, launch on Cloudflare the same way you deployed v0, write a 3-month “what's next” plan.</p></div>
+      <div class="card"><h3>Calendar at a glance</h3><div class="timeline-mini"><div>OCT</div><div><strong>Oct 22</strong> Setup · <strong>Oct 26</strong> Phase 1 starts</div><div>NOV</div><div>Phases 1–2 · Thanksgiving flex Nov 23–27</div><div>DEC</div><div>Phase 2 live v0 · Phase 3 starts · Winter break Dec 21 →</div><div>JAN</div><div>Winter break → Jan 8 · Phases 3–5</div><div>FEB</div><div>Phases 5–6 · APIs & design doc</div><div>MAR</div><div>Phases 7–8 · Pipelines & AI · Spring break Mar 29</div><div>APR</div><div>Phases 9–10 · DevOps, then build wrench.repair</div><div>MAY</div><div>Phase 10 finish May 14 · <strong>Phase 11 launch May 20</strong></div></div></div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section id="resources">
+    <div class="sec-head"><div><div class="kicker">All resources</div><h2>Everything linked in the plan, in one place.</h2></div><p>Search to filter. Check each link as you reach its phase — the plan notes the phase links come from knowledge, not a click-through audit.</p></div>
+    <input class="search" id="resSearch" type="search" placeholder="Search resources — try “Python”, “Cloudflare”, “pandas”, “Wireshark”…"/>
+    <div id="resGrid" class="grid3" style="margin-top:16px"></div>
+    <p id="resEmpty" style="display:none;color:var(--muted);font-size:14px;margin-top:12px">No resources match that search.</p>
+  </section>
+
+  <!-- DECISIONS -->
+  <section id="decisions">
+    <div class="sec-head"><div><div class="kicker">Decisions & sources</div><h2>Locked in from your Oct 22 answers.</h2></div><p>Tell your senior / tutor if any of these need changing — they shape the whole plan.</p></div>
+    <div class="grid2">
+      <div>
+        <details open><summary>Stack — Worker (JS) + Python for data prep</summary><p style="color:var(--muted);font-size:14px">wrench.repair has no source yet and you'll write it yourself. Assumed: a Cloudflare Worker (JavaScript) for the app and Python for data preparation.</p></details>
+        <details><summary>Calendar — 5 flex weeks, 50 sessions</summary><p style="color:var(--muted);font-size:14px">Breaks are Nov 23–27, Dec 21 – Jan 8, and Mar 29 – Apr 3, which leaves 5 flex weeks and 50 learning sessions across 30 weeks.</p></details>
+        <details><summary>Co-authors — solo, self-reviewed PRs</summary><p style="color:var(--muted);font-size:14px">The plan assumes you work solo, so pull requests are self-reviewed. In Phases 9–10 you still work branch → PR → merge, for the habit and the history.</p></details>
+        <details><summary>Manuals & Hosting</summary><p style="color:var(--muted);font-size:14px"><strong>Manuals:</strong> you have a legal source, so Phase 10 uses them directly. Use practice documents you have the right to use in Phase 7. <strong>Hosting:</strong> Cloudflare, with a new hosting module in Phase 2 (Week 6).</p></details>
+      </div>
+      <div class="card"><h3>Sources consulted while drafting</h3><ul><li>wrench-repair/wrench.repair on GitHub — README, file list, license (as of Oct 22, 2026)</li><li>Anthropic: embeddings guide — no Anthropic embedding model; Voyage AI recommended</li><li>Cloudflare Vectorize changelog & product page — vector DB and managed retrieval (AI Search)</li><li>AWS News Blog: Free Tier update — credit-based plan for new accounts</li><li>AWS Builder Center: what's next on Free Tier — credit expiry and budget alerts</li></ul><p style="margin-top:12px"><strong>Two practical notes:</strong> Anthropic doesn't offer its own embedding model — budget for Voyage AI or a free alternative. And create the AWS account at the <strong>start of Week 25 (Apr 12)</strong>, not earlier; set a budget alert before launching anything and delete resources when you finish.</p></div>
+    </div>
+  </section>
+
+  <div class="footer"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px"><span>Tue/Thu Software Engineering Roadmap · Oct 2026 – May 2027 · Hosted from the original PDF plan (14 pages)</span><span class="mono">learning-log → website · wrench.repair</span></div><p style="margin-top:10px">This page hosts the full roadmap: all 11 phases, every Tuesday/Thursday plan, resources, checkpoints, decisions, and sources from the document. Once you've reviewed the draft, this set of files is ready to publish — exactly as you'll do for v0 in Week 6 on Cloudflare.</p></div>
+</main>
+
+<script>
+const PHASES=[
+{id:1,group:"foundations",title:"Fundamentals and tooling",dates:"Weeks 1–2 · Oct 22 – Nov 6",goal:"By Nov 6 you can write, test and version a small Python program without hand-holding, and you work comfortably in a terminal.",weeks:[
+{w:"Today · Oct 22",tue:"Optional setup: install Python 3.12+, VS Code, git; create the learning-log repo",thu:"Skim this plan and flag anything that looks wrong"},
+{w:"Week 1 · Oct 26",tue:"Terminal and git basics: navigate, branch, commit, push",thu:"Python refresher: functions, lists/dicts, files; 5 small exercises, commit each"},
+{w:"Week 2 · Nov 2",tue:"Classes, inheritance vs composition, exceptions, intro to pytest",thu:"Build a small CLI “repair log” that saves entries to a JSON file, with 3+ tests; push it"}],resources:["CS50P — watch lectures 0–3 and 5","Automate the Boring Stuff with Python — reference for files & strings","The Missing Semester — shell & version control","Pro Git — chapters 1–3 only"],checkpoint:"The CLI is on GitHub with passing tests, and you can explain what a class, a function and an exception each do in your own words."},
+{id:2,group:"foundations",title:"HTML, CSS, JavaScript and website hosting",dates:"Weeks 3, 4, 6 · Nov 9 – Dec 4",goal:"By Dec 4 you can build a small interactive web page, you understand how a website gets from your laptop onto the internet, and your learning-log site v0 is live on Cloudflare. Week 5 is Thanksgiving flex.",weeks:[
+{w:"Week 3 · Nov 9",tue:"HTML structure: headings, links, forms, semantic tags, accessibility basics",thu:"CSS: flexbox and grid; style a static “About my learning” page"},
+{w:"Week 4 · Nov 16",tue:"JavaScript basics (compare with Python): variables, functions, arrays, objects, the DOM",thu:"Interactive page: a maintenance checklist that adds/removes items and remembers them in localStorage"},
+{w:"Week 5 · Nov 23",tue:"Flex week (Thanksgiving)",thu:"Flex week (Thanksgiving)"},
+{w:"Week 6 · Nov 30",tue:"Hosting module: web servers, static vs dynamic, domains / registrars / DNS, hosting options & cost, HTTPS certificates, deploy flow & rollback",thu:"Deploy your pages to Cloudflare, publish learning-log site v0 (this roadmap), and look at it in devtools"}],resources:["MDN: Learn web development","web.dev Learn HTML & Learn CSS","javascript.info — parts 1 & 2 selectively","Cloudflare Learning Center — DNS, CDN, HTTPS","Cloudflare Workers static assets docs"],checkpoint:"Site v0 is live at a public URL on Cloudflare, and you can explain what happens between typing its address and seeing the page."},
+{id:3,group:"foundations",title:"Data structures and algorithms",dates:"Weeks 7, 8, 12 · Dec 7 – Jan 15",goal:"By Jan 15 you can pick the right structure for a problem, build the core ones from scratch, and state the Big-O cost of your own code. Weeks 9–11 are winter break.",weeks:[
+{w:"Week 7 · Dec 7",tue:"Big-O, arrays, strings, hash maps",thu:"Solve 4 easy problems; try two-pointer and sliding-window patterns"},
+{w:"Week 8 · Dec 14",tue:"Linked lists, stacks, queues",thu:"Implement a stack, a queue and a linked list in Python with tests; then trees and recursion"},
+{w:"Weeks 9–11 · Dec 21–Jan 8",tue:"Winter break",thu:"Winter break — one easy practice problem a day is plenty if you feel like it"},
+{w:"Week 12 · Jan 11",tue:"Graphs, BFS/DFS, sorting, binary search",thu:"Build a tiny keyword search over a folder of text files using an inverted index (reappears in Phases 7 & 8)"}],resources:["NeetCode roadmap — problems by pattern, with videos","VisuAlgo — animations of every structure","CS50x — DS&A lectures as a second explanation","Grokking Algorithms by Bhargava — optional, gentle & illustrated"],checkpoint:"Your four from-scratch structures have tests, and you can explain why a hash map lookup is fast and when it isn't. Problem counts are a guide: ~30–40 easy and a few medium across the phase is a good outcome.",extra:"Problem counts are a guide, not a target."},
+{id:4,group:"foundations",title:"Databases — concepts only",dates:"Week 13 · Jan 18–22",goal:"By Jan 22 you can say when to use a table store, a document store or a key-value store, and what an index does. No dedicated SQL phase — just enough SQL to read a query.",weeks:[
+{w:"Week 13 · Jan 18",tue:"Storage types, indexes, transactions (ACID) at concept level; read 5 simple SQL queries",thu:"Move your Phase 1 CLI from a JSON file to SQLite; time a lookup with and without an index"}],resources:["Use The Index, Luke — first two chapters","SQLite documentation — About & quick-start","Designing Data-Intensive Applications — ch. 1–3, optional & dense"],checkpoint:"A one-paragraph note in your log explaining which store you would pick for wrench.repair's data and why. Vector databases (the kind RAG needs) are covered in Phase 8."},
+{id:5,group:"systems",title:"Networking and infrastructure design",dates:"Weeks 14–16 · Jan 25 – Feb 12",goal:"By Feb 12 you can trace a request from a browser to a server and explain every hop, and sketch how caches, CDNs and load balancers fit around an app. This replaces SQL & Spring Boot.",weeks:[
+{w:"Week 14 · Jan 25",tue:"How the internet works: IP, TCP vs UDP, ports, DNS",thu:"Experiment: run dig, ping, traceroute and curl against wrench.repair and write down what each shows"},
+{w:"Week 15 · Feb 1",tue:"HTTP in depth: methods, status codes, headers, cookies, caching; TLS/HTTPS basics",thu:"Capture one request in devtools and in Wireshark; write a tiny HTTP server in Python using only socket"},
+{w:"Week 16 · Feb 8",tue:"Infrastructure design: CDNs, reverse proxies, load balancers, caching layers, rate limiting",thu:"Sketch the architecture wrench.repair needs (browser, DNS, Cloudflare, Worker, storage) and mark one weakness"}],resources:["Cloudflare Learning Center — DNS, CDNs, load balancing","MDN: HTTP — headers, caching, status codes","High Performance Browser Networking — TCP, TLS, HTTP chapters","Beej's Guide to Network Programming","Wireshark","Computer Networking: Top-Down Approach — optional textbook"],checkpoint:"A diagram and a one-page explanation of the path from typing wrench.repair in a browser to getting a response, in your own words."},
+{id:6,group:"systems",title:"APIs and system design",dates:"Weeks 17–18 · Feb 15–26",goal:"By Feb 26 you have built the same small API twice — once in Python, once as a Cloudflare Worker — and written a design doc for wrench.repair end to end.",weeks:[
+{w:"Week 17 · Feb 15",tue:"REST, JSON, status codes, pagination, auth; why API keys never go in browser code; JS fetch and async/await",thu:"Build a 3-endpoint API in FastAPI (e.g. repair-log entries); test with curl and call it from a web page with fetch"},
+{w:"Week 18 · Feb 22",tue:"System design basics: requirements, components, trade-offs, rough capacity estimates",thu:"Rebuild one endpoint as a Cloudflare Worker, then write a 1–2 page design doc for wrench.repair v1"}],resources:["FastAPI tutorial — first steps & path parameters","Cloudflare Workers docs — Get started","System Design Primer — intro, scalability, caching","MDN: Using the Fetch API"],checkpoint:"Both APIs respond to curl, and the design doc has a diagram and a list of open questions. Keep it honest about what you don't know yet — it's the bridge to Phase 10."},
+{id:7,group:"data-ai",title:"Data pipelines",dates:"Weeks 19–20 · Mar 1–12",goal:"By Mar 12 you have a re-runnable script that turns raw documents into clean, labeled text chunks — exactly the shape the AI phase needs.",weeks:[
+{w:"Week 19 · Mar 1",tue:"Extract–transform–load, batch vs streaming, schemas, idempotency; pandas basics",thu:"ETL script: pull a public dataset or API, clean with pandas, save to SQLite; run twice and confirm no duplicates"},
+{w:"Week 20 · Mar 8",tue:"Unstructured data: parsing PDFs and HTML, chunking text, metadata, data quality checks",thu:"Pipeline v2: documents you are free to use — extract text, split into chunks with metadata, write JSON"}],resources:["Data Engineering Zoomcamp — intro & workflow modules","10 Minutes to pandas","PyMuPDF docs & Beautiful Soup docs","Fundamentals of Data Engineering — ch. 1–3, optional"],checkpoint:"One command regenerates the chunk file from raw documents, and at least three automatic checks (empty chunk, duplicate chunk, missing metadata) run every time. In Phase 10 you'll point this at your real manuals."},
+{id:8,group:"data-ai",title:"AI integration — the “Claude” step",dates:"Weeks 21–22 · Mar 15–26",goal:"By Mar 26 you have a script that answers questions only from documents you give it, cites where each answer came from, and says “I don't know” when the documents don't cover it.",weeks:[
+{w:"Week 21 · Mar 15",tue:"LLM API basics: messages, system prompts, tokens and cost, streaming; keep API keys on the server",thu:"Python script that calls the Claude API: a summarizer returning structured JSON, with error handling and retries"},
+{w:"Week 22 · Mar 22",tue:"Retrieval-augmented generation (RAG): embeddings, similarity search, grounding, citations, hallucination limits",thu:"Mini-RAG over Phase 7 chunks: embed, retrieve top matches (cosine similarity, using Phase 3 skills), answer with citations; 10-question test set"}],resources:["Claude prompt engineering overview","Claude API docs — quickstart, messages, streaming","Anthropic embeddings guide — Voyage AI option","Cloudflare Vectorize & AI Search — overviews","Anthropic courses on GitHub — prompting & tool use"],checkpoint:"On your 10-question test set, the script cites a source for every answer, and for at least 2 questions the documents can't answer, it declines instead of guessing."},
+{id:9,group:"ship",title:"DevOps and cloud",dates:"Weeks 24–25 · Apr 5–16",goal:"By Apr 16 your tests run automatically on every push, one program runs in a container, and you've deployed then torn down something on AWS. Week 23 is spring break.",weeks:[
+{w:"Week 23 · Mar 29",tue:"Spring break",thu:"Spring break"},
+{w:"Week 24 · Apr 5",tue:"Git workflow: branches, pull requests, self-review checklists; CI with GitHub Actions; secrets",thu:"Add a GitHub Actions workflow that runs tests on your CLI repo; practice a PR from a branch (not directly on main)"},
+{w:"Week 25 · Apr 12",tue:"Docker basics; cloud concepts (regions, IAM, compute, storage, serverless, cost) using AWS, mapped to Cloudflare equivalents (R2, Workers)",thu:"Containerize your Phase 7 pipeline or Phase 6 API; deploy one small piece to AWS (S3 static site or Lambda), then delete it"}],resources:["GitHub Actions docs — quickstart","Docker: Get Started — parts 1–3","AWS Cloud Practitioner Essentials — compute, storage, security","Cloudflare Workers docs — deploy & secrets","AWS Free Tier page — check current terms"],checkpoint:"A green CI badge on your repo, a working Docker image, and a note comparing one AWS service with its Cloudflare counterpart."},
+{id:10,group:"ship",title:"Build wrench.repair yourself",dates:"Weeks 26–29 · Apr 19 – May 14",goal:"By May 14 one vehicle system works end to end: a user describes a problem and their experience level, and gets sourced, level-appropriate repair steps. Each week's work on its own branch, merged by PR.",weeks:[
+{w:"Week 26 · Apr 19",tue:"Scaffold: turn Phase 6 design doc into a task list; set up a Worker with wrangler and a simple dev HTML form",thu:"Deploy the bare app to Cloudflare through CI; form sends a request and gets a placeholder answer"},
+{w:"Week 27 · Apr 26",tue:"Prepare data: run a small slice of real manuals (one vehicle, one system) through your Phase 7 pipeline, keeping manual & page as metadata",thu:"Embed and index chunks in a vector store (Vectorize or another)"},
+{w:"Week 28 · May 3",tue:"Retrieval endpoint in the Worker; test with 10 real questions and fix worst chunking problems",thu:"Prompt design: vehicle + problem + level in, grounded steps with citations out; safety rules matching README disclaimer"},
+{w:"Week 29 · May 10",tue:"Wire it together: form → API → Claude, with error handling, rate limits and a cost cap",thu:"Evaluate with 20 test questions across levels, check citations; deploy, update README & diagram, write retrospective"}],resources:["Your Phase 6 design doc","Phase 7 pipeline & Phase 8 mini-RAG","Cloudflare Workers + Vectorize docs","Claude API docs"],checkpoint:"One vehicle system answers end to end, every answer cites its source passage, and each change was merged through a pull request."},
+{id:11,group:"ship",title:"The website",dates:"Week 30 · May 17–20 (+ v0 from Week 6)",goal:"The finished site is a static HTML/CSS/JS page set built from your learning-log notes. You publish v0 in Week 6 and grow it as you go instead of doing it all at the end.",weeks:[
+{w:"Week 30 · May 17",tue:"Assemble final content: notes, screenshots, diagrams; accessibility and mobile check",thu:"Polish, launch on Cloudflare the same way you deployed v0, write a 3-month “what's next” plan"}],resources:["Your learning-log repo","Phase 2 hosting notes","Cloudflare deploy flow from Week 6"],checkpoint:"Site live on Cloudflare with five pages — Roadmap, Learning log, Projects, wrench.repair, Resources — and a 3-month what's-next plan."}
+];
+
+const RESOURCES=[
+["CS50P: Intro to Programming with Python","Phase 1 · Lectures 0–3 and 5 · Free","Python"],
+["Automate the Boring Stuff with Python","Phase 1 · Files & strings reference · Free online","Python"],
+["The Missing Semester of Your CS Education","Phase 1 · Shell & version control","Tools"],
+["Pro Git — Chapters 1–3","Phase 1 · Git fundamentals","Tools"],
+["MDN: Learn Web Development","Phase 2 · Main HTML/CSS/JS reference","Web"],
+["web.dev — Learn HTML / Learn CSS","Phase 2 · Short illustrated courses","Web"],
+["javascript.info","Phase 2 · Parts 1 & 2 selectively","Web"],
+["Cloudflare Learning Center","Phases 2 & 5 · DNS, CDN, HTTPS explainers","Cloudflare"],
+["Cloudflare Workers — Static Assets & Docs","Phases 2, 6, 9 · Deploy static sites & Workers","Cloudflare"],
+["NeetCode Roadmap","Phase 3 · Problems by pattern + videos","Algorithms"],
+["VisuAlgo","Phase 3 · Animated data structures","Algorithms"],
+["CS50x — DS&A Lectures","Phase 3 · Second explanation","Algorithms"],
+["Grokking Algorithms — Bhargava","Phase 3 · Optional illustrated book","Algorithms"],
+["Use The Index, Luke — Ch. 1–2","Phase 4 · How indexes work · Free","Databases"],
+["SQLite Documentation","Phase 4 · About & quick-start","Databases"],
+["Designing Data-Intensive Applications — Kleppmann","Phase 4 · Ch. 1–3, optional","Databases"],
+["MDN: HTTP","Phase 5 · Headers, caching, status codes","Networking"],
+["High Performance Browser Networking — Grigorik","Phase 5 · TCP, TLS, HTTP · Free book","Networking"],
+["Beej's Guide to Network Programming","Phase 5 · Sockets (ideas in C, write in Python)","Networking"],
+["Wireshark","Phase 5 · Packet capture tool · Free","Networking"],
+["FastAPI Tutorial","Phase 6 · First steps & path parameters","APIs"],
+["System Design Primer","Phase 6 · Intro, scalability, caching","APIs"],
+["MDN: Using the Fetch API","Phase 6 · Browser side","APIs"],
+["Data Engineering Zoomcamp","Phase 7 · Intro & workflow modules · Free","Data"],
+["10 Minutes to pandas","Phase 7 · Quickest way in","Data"],
+["PyMuPDF & Beautiful Soup Docs","Phase 7 · PDFs & web pages","Data"],
+["Fundamentals of Data Engineering — Reis & Housley","Phase 7 · Ch. 1–3, optional","Data"],
+["Claude Prompt Engineering Overview","Phase 8 · Prompts with examples","AI"],
+["Claude API Docs","Phase 8 · Quickstart, messages, streaming","AI"],
+["Anthropic Embeddings Guide","Phase 8 · Voyage AI option","AI"],
+["Cloudflare Vectorize & AI Search","Phase 8 · Overviews now, use in Phase 10","AI"],
+["Anthropic Courses on GitHub","Phase 8 · Prompting & tool use notebooks","AI"],
+["GitHub Actions Docs — Quickstart","Phase 9 · CI","DevOps"],
+["Docker: Get Started — Parts 1–3","Phase 9 · Containers","DevOps"],
+["AWS Cloud Practitioner Essentials","Phase 9 · Compute, storage, security · Free","DevOps"],
+["AWS Free Tier Page","Phase 9 · Check current credit terms","DevOps"],
+];
+
+let doneSet=new Set();
+function renderPhases(){
+  const el=document.getElementById('phaseList'); el.innerHTML='';
+  PHASES.forEach(p=>{
+    const div=document.createElement('article'); div.className='phase'; div.dataset.group=p.group; div.id='phase-'+p.id;
+    const weeksHtml=p.weeks.map(w=>`<tr><td style="white-space:nowrap;font-weight:600">${w.w}</td><td><span class="mono" style="font-size:11px;color:var(--accent)">TUE</span> ${w.tue}</td><td><span class="mono" style="font-size:11px;color:var(--teal)">THU</span> ${w.thu}</td></tr>`).join('');
+    div.innerHTML=`<button class="phase-head" onclick="this.parentElement.classList.toggle('open')"><span class="phase-num">${String(p.id).padStart(2,'0')}</span><span style="flex:1;min-width:0"><h3>${p.title}</h3><p>${p.goal}</p></span><span class="phase-meta"><span>${p.dates}</span><span style="font-size:18px;margin-top:4px">${'▾'}</span></span></button>
+    <div class="phase-body"><div class="table-wrap"><table><thead><tr><th>Week</th><th>Tuesday: Learn</th><th>Thursday: Build</th></tr></thead><tbody>${weeksHtml}</tbody></table></div>
+    <div class="resources">${p.resources.map(r=>`<span class="res-chip">${r}</span>`).join('')}</div>
+    <div class="checkpoint"><div style="flex:1"><strong style="font-size:13px;letter-spacing:.04em;text-transform:uppercase">◆ Checkpoint</strong><p>${p.checkpoint}</p></div><button class="done-btn" data-id="${p.id}" onclick="toggleDone(${p.id},this)">Mark done</button></div></div>`;
+    el.appendChild(div);
+  });
+  // restore done states
+  document.querySelectorAll('.done-btn').forEach(b=>{ const id=+b.dataset.id; if(doneSet.has(id)){ b.classList.add('on'); b.textContent='✓ Done'; b.closest('.phase').classList.add('done'); }});
+}
+function toggleDone(id,btn){
+  if(doneSet.has(id)){ doneSet.delete(id); btn.classList.remove('on'); btn.textContent='Mark done'; btn.closest('.phase').classList.remove('done'); }
+  else{ doneSet.add(id); btn.classList.add('on'); btn.textContent='✓ Done'; btn.closest('.phase').classList.add('done'); }
+  document.getElementById('doneCount').textContent=doneSet.size;
+  const pct=Math.round(doneSet.size/11*100); document.getElementById('donePct').textContent=pct+'%'; document.getElementById('progressFill').style.width=pct+'%';
+}
+function toggleAll(open){ document.querySelectorAll('.phase').forEach(p=>p.classList.toggle('open',open)); }
+function renderPath(){
+  const t=document.getElementById('pathTrack'); t.innerHTML='';
+  PHASES.forEach(p=>{ const b=document.createElement('button'); b.className='phase-dot'; b.innerHTML=`<b>PHASE ${p.id}</b><span>${p.title}</span><small>${p.dates.split('·')[0]}</small>`; b.onclick=()=>{ document.getElementById('phase-'+p.id).scrollIntoView({behavior:'smooth',block:'center'}); document.getElementById('phase-'+p.id).classList.add('open'); }; t.appendChild(b); });
+}
+function renderResources(q=''){
+  const g=document.getElementById('resGrid'); g.innerHTML=''; let n=0;
+  RESOURCES.filter(r=>(r[0]+r[1]+r[2]).toLowerCase().includes(q.toLowerCase())).forEach(r=>{ n++; const d=document.createElement('div'); d.className='card'; d.innerHTML=`<div class="mono" style="font-size:11px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase">${r[2]}</div><h3 style="margin-top:6px">${r[0]}</h3><p>${r[1]}</p>`; g.appendChild(d); });
+  document.getElementById('resEmpty').style.display=n?'none':'block';
+}
+document.getElementById('filters').addEventListener('click',e=>{ if(e.target.tagName!=='BUTTON')return; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); e.target.classList.add('active'); const f=e.target.dataset.f; document.querySelectorAll('.phase').forEach(p=>{ p.style.display=(f==='all'||p.dataset.group===f)?'':'none'; }); });
+document.getElementById('resSearch').addEventListener('input',e=>renderResources(e.target.value));
+function downloadLogTemplate(){
+  const md=`# learning-log\n\nOne note per session — 5 minutes at the end. This repo becomes your final website.\n\n## Session template\n\n**Date:** \n**Phase / Week:** \n**Question I started with:** \n**What I did (5 lines):** \n- \n- \n- \n- \n- \n**What surprised me (Thu):** \n**Stuck? Question for senior / tutor:** \n**Commit:** \n\n---\n\n## Checkpoints\n\n- [ ] Phase 1 — CLI on GitHub with passing tests\n- [ ] Phase 2 — Site v0 live on Cloudflare\n- [ ] Phase 3 — Four structures with tests\n- [ ] Phase 4 — Store choice note for wrench.repair\n- [ ] Phase 5 — Request-path diagram + 1-page explainer\n- [ ] Phase 6 — Both APIs respond to curl + design doc\n- [ ] Phase 7 — One-command pipeline + 3 checks\n- [ ] Phase 8 — Mini-RAG cites sources, declines 2/10\n- [ ] Phase 9 — CI badge + Docker image + AWS vs Cloudflare note\n- [ ] Phase 10 — One vehicle system end-to-end with citations\n- [ ] Phase 11 — Final site live + what's-next plan\n`;
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([md],{type:'text/markdown'})); a.download='learning-log-template.md'; a.click(); URL.revokeObjectURL(a.href);
+}
+renderPhases(); renderPath(); renderResources();
+// open phase 1 by default
+document.getElementById('phase-1').classList.add('open');
+</script>
+</body>
+</html>
